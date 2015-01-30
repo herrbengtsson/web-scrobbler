@@ -59,7 +59,7 @@ define([], function() {
 		 * @param {can.Map} songObj
 		 */
 		this.setSongRecognized = function(songObj) {
-			setPageAction(icons.RECOGNIZED, 'Now playing ' + songObj.getArtist() + ' - ' + songObj.getTrack(), '');
+			setPageAction(icons.RECOGNIZED, 'Now playing ' + songObj.getArtist() + ' - ' + songObj.getTrack(), 'popups/info.html');
 		};
 
 		this.setSongRecognizedDisabled = function() {
@@ -67,7 +67,7 @@ define([], function() {
 		};
 
 		this.setSongScrobbled = function(song) {
-			setPageAction(icons.SCROBBLED, 'Scrobbled ' + song.getArtist() + ' - ' + song.getTrack(), '');
+			setPageAction(icons.SCROBBLED, 'Scrobbled ' + song.getArtist() + ' - ' + song.getTrack(), 'popups/info.html');
 		};
 
 		this.setSongNotRecognized = function() {

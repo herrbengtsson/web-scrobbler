@@ -265,7 +265,10 @@ define([
 			});
 
 			song.metadata.attr({
-				artistThumbUrl: $doc.find('album > image[size="medium"]').text()
+				artistThumbUrl: $doc.find('album > image[size="medium"]').text(),
+				loved: $doc.find('track > userloved').text(),
+				artistUrl: $doc.find('artist > url').text(),
+				trackUrl: $doc.find('track > url').text()
 			});
 
 			song.flags.attr('isLastfmValid', true);

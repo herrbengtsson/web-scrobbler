@@ -56,7 +56,7 @@ define([
 
 				var options = {
 					type: 'basic',
-					iconUrl: song.metadata.artistThumbUrl || 'icon128.png',
+					iconUrl: song.metadata.artistThumbUrl || song.parsed.artistThumbUrl || 'icon128.png',
 					title: song.getTrack(),
 					message: 'by ' + song.getArtist()
 				};

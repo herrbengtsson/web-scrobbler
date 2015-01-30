@@ -38,6 +38,15 @@ var BaseConnector = window.BaseConnector || function () {
 		 * @type {string}
 		 */
 		this.albumSelector = null;
+      
+		/**
+		 * Selector of an element containing artist thumb URL. The containing string will be filtered
+		 * in the background script, if needed.
+		 * Only applies when default implementation of {@link BaseConnector#getArtistThumbUrl} is used
+		 *
+		 * @type {string}
+		 */
+		this.artistThumbUrl = null;
 
 		/**
 		 * Selector of an element containing track current time in h:m:s format.
@@ -113,6 +122,18 @@ var BaseConnector = window.BaseConnector || function () {
 		 */
 		this.getAlbum = function () {
 			var text = $(this.albumSelector).text();
+			return text || null;
+		};
+      
+		/**
+		 * Default implementation of artist thumb URL lookup by selector
+		 *
+		 * Override this method for more complex behaviour
+		 *
+		 * @returns {string|null}
+		 */
+		this.getArtistThumbUrl = function () {
+			var text = $(this.artistThumbUrl).attr("src");
 			return text || null;
 		};
 
@@ -253,7 +274,8 @@ var BaseConnector = window.BaseConnector || function () {
 			uniqueID: null,
 			duration: null,
 			currentTime: 0,
-			isPlaying: true
+			isPlaying: true,
+			artistThumbUrl: null
 		};
 
 		/**
@@ -298,6 +320,12 @@ var BaseConnector = window.BaseConnector || function () {
 				changedFields.push('album');
 			}
 
+			var newArtistThumbUrl = this.getArtistThumbUrl();
+			if (newArtistThumbUrl !== currentState.artistThumbUrl) {
+				currentState.artistThumbUrl = newArtistThumbUrl;
+				changedFields.push('artistThumbUrl');
+			}
+         
 			var newUID = this.getUniqueID();
 			if (newUID !== currentState.uniqueID) {
 				currentState.uniqueID = newUID;

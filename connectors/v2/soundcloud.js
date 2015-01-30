@@ -33,7 +33,8 @@ Connector.getCurrentTime = function () {
 };
 
 Connector.getArtistTrack = function () {
-   if (SoundcloudConnector.metadata == null) return null;
+   if (SoundcloudConnector.metadata == null) return {artist: null, track: null};
+   
    var text = SoundcloudConnector.metadata.title;
    var separator = this.findSeparator(text);
 
@@ -54,6 +55,10 @@ Connector.getArtistTrack = function () {
 
 Connector.getUniqueID = function () {
    return SoundcloudConnector.id;
+};
+
+Connector.getArtistThumbUrl = function () {
+   return SoundcloudConnector.metadata.artwork_url;
 };
 
 /**

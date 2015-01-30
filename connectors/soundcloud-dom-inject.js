@@ -19,12 +19,14 @@ window._ATTACHED = window._ATTACHED || false;
             bus.on('audio:play', function(e) {
                 window.postMessage({
                     type: 'SC_PLAY',
+                    id: e.sound.id,
                     metadata: e.sound.attributes
                 }, '*');
             });
             bus.on('audio:pause', function(e) {
                 window.postMessage({
                     type: 'SC_PAUSE',
+                    id: e.sound.id,
                     metadata: e.sound.attributes
                 }, '*');
             });

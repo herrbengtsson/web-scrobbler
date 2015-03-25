@@ -98,8 +98,9 @@ define(function() {
 
 		{
 			label: 'Ghostly Discovery',
-			matches: ['http://ghostly.com/discovery/play'],
-			js: ['connectors/ghostly.js']
+			matches: ['http://ghostly.com/discovery/play', 'http://www.ghostly.com/discovery/play'],
+			js: ['connectors/v2/ghostly.js'],
+			version: 2
 		},
 
 		{
@@ -192,7 +193,8 @@ define(function() {
 		{
 			label: 'Indie Shuffle',
 			matches: ['*://www.indieshuffle.com/*'],
-			js: ['connectors/indieshuffle.js']
+			js: ['connectors/v2/indieshuffle.js'],
+			version: 2
 		},
 
 		{
@@ -467,6 +469,13 @@ define(function() {
 		},
 
 		{
+			label: 'TIDAL',
+			matches: ['*://listen.tidalhifi.com/*'],
+			js: ['connectors/v2/tidal.js'],
+			version: 2
+		},
+
+		{
 			label: 'Bop.fm',
 			matches: ['*://bop.fm/*'],
 			js: ['connectors/v2/bopfm.js'],
@@ -477,6 +486,13 @@ define(function() {
 			label: 'Radionomy',
 			matches: ['*://www.radionomy.com/*'],
 			js: ['connectors/v2/radionomy.js'],
+			version: 2
+		},
+
+		{
+			label: 'Jazzradio',
+			matches: ['*://www.jazzradio.com/*'],
+			js: ['connectors/v2/jazzradio.js'],
 			version: 2
 		}
 

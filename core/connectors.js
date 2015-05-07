@@ -206,7 +206,8 @@ define(function() {
 		{
 			label: 'Spotify',
 			matches: ['https://play.spotify.com/*'],
-			js: ['connectors/spotify.js']
+			js: ['connectors/v2/spotify.js'],
+			version: 2
 		},
 
 		{
@@ -330,15 +331,9 @@ define(function() {
 		},
 
 		{
-			label: 'Digitally Imported and Sky.FM',
-			matches: ['*://www.di.fm/*', '*://www.sky.fm/*'],
+			label: 'Digitally Imported',
+			matches: ['*://www.di.fm/*'],
 			js: ['connectors/difm.js']
-		},
-
-		{
-			label: 'New Digitally Imported',
-			matches: ['*://new.di.fm/*'],
-			js: ['connectors/difm2.js']
 		},
 
 		{
@@ -494,7 +489,27 @@ define(function() {
 			matches: ['*://www.jazzradio.com/*'],
 			js: ['connectors/v2/jazzradio.js'],
 			version: 2
-		}
+		},
 
+		{
+			label: 'Musicload',
+			matches: ['*://www.musicload.de/*'],
+			js: ['connectors/v2/musicload.js'],
+			version: 2
+		},
+
+		{
+			label: 'Noon Pacific',
+			matches: ['*://www.noonpacific.com/*', '*://noonpacific.com/*'],
+			js: ['connectors/v2/noonpacific.js'],
+			version: 2
+		},
+
+		{
+			label: 'SomaFM',
+			matches: ['*://somafm.com/player/*'],
+			js: ['connectors/v2/somafm.js'],
+			version: 2
+		}
 	];
 });

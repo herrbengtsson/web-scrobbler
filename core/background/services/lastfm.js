@@ -384,8 +384,82 @@ define([
 			doRequest('POST', params, true, okCb, errCb);
 		});
 	}
+   
+	/**
+	 * Send song to API to love
+	 * @param {can.Map} song
+	 * @param {Function} cb callback with single ServiceCallResult parameter
+	 */
+	function love(song, cb) {
+		getSessionID(function(sessionID) {
+			if (!sessionID) {
+				var result = new ServiceCallResultFactory.ServiceCallResult(ServiceCallResultFactory.results.ERROR_AUTH);
+				cb(result);
+			}
+         
+			var params = {
+				method: 'track.love',
+				'track[0]': song.processed.track || song.parsed.track,
+				'artist[0]': song.processed.artist || song.parsed.artist,
+				api_key: config.apiKey,
+				sk: sessionID
+			};
+         
+			var okCb = function(xmlDoc) {
+				var $doc = $(xmlDoc);
 
+				if ($doc.find('lfm').attr('status') == 'ok') {
+					cb(true);
+				} else {
+					cb(false); // request passed but returned error
+				}
+			};
 
+			var errCb = function() {
+				cb(false);
+			};
+         
+			doRequest('POST', params, true, okCb, errCb);
+		});
+	}
+   
+	/**
+	 * Send song to API to unlove
+	 * @param {can.Map} song
+	 * @param {Function} cb callback with single ServiceCallResult parameter
+	 */
+	function unlove(song, cb) {
+		getSessionID(function(sessionID) {
+			if (!sessionID) {
+				var result = new ServiceCallResultFactory.ServiceCallResult(ServiceCallResultFactory.results.ERROR_AUTH);
+				cb(result);
+			}
+         
+			var params = {
+				method: 'track.unlove',
+				'track[0]': song.processed.track || song.parsed.track,
+				'artist[0]': song.processed.artist || song.parsed.artist,
+				api_key: config.apiKey,
+				sk: sessionID
+			};
+         
+			var okCb = function(xmlDoc) {
+				var $doc = $(xmlDoc);
+
+				if ($doc.find('lfm').attr('status') == 'ok') {
+					cb(true);
+				} else {
+					cb(false); // request passed but returned error
+				}
+			};
+
+			var errCb = function() {
+				cb(false);
+			};
+         
+			doRequest('POST', params, true, okCb, errCb);
+		});
+	}
 
 	return {
 		getAuthUrl: getAuthUrl,
@@ -393,7 +467,9 @@ define([
 		generateSign: generateSign,
 		loadSongInfo: loadSongInfo,
 		sendNowPlaying: sendNowPlaying,
-		scrobble: scrobble
+		scrobble: scrobble,
+		love: love,
+		unlove: unlove
 	};
 
 });

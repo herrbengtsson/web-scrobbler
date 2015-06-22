@@ -1,4 +1,4 @@
-# Last.fm Scrobbler for Chrome ![build status](https://api.travis-ci.org/david-sabata/web-scrobbler.svg)
+# Last.fm Scrobbler for Chrome [![build status](https://api.travis-ci.org/david-sabata/web-scrobbler.svg)](https://travis-ci.org/david-sabata/web-scrobbler/)
 
 Last.fm Scrobbler for Chrome was created for people who listen to music online through their browser, and would like to keep an updated playback history using [last.fm][1]'s scrobbling service.
 
@@ -29,6 +29,10 @@ Check the [wiki pages](../../wiki) to understand development of connectors.
 You can also join us on our IRC channel #web-scrobbler on irc.freenode.net.
 
 If you are unfamiliar with IRC you can connect easily via [Kiwi IRC][0].
+
+## Privacy Policy
+
+See https://github.com/david-sabata/web-scrobbler/wiki/Privacy-policy
 
 ## License
 

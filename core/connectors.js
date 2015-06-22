@@ -53,12 +53,6 @@ define(function() {
 			js: ['connectors/61.js']
 		},
 
-		//{
-		//	label: 'Google Play Music',
-		//	matches: ['*://play.google.com/music/*', '*://play-music.sandbox.google.com/music/*'],
-		//	js: ['connectors/googlemusic.js']
-		//},
-
 		{
 			label: 'Google Play Music',
 			matches: ['*://play.google.com/music/*'],
@@ -105,8 +99,9 @@ define(function() {
 
 		{
 			label: 'Bandcamp',
-			matches: ['*://*.bandcamp.com/*', '*://bandcamp.com/discover'],
-			js: ['connectors/bandcamp.js']
+			matches: ['*://*.bandcamp.com/*', '*://bandcamp.com/discover*'],
+			js: ['connectors/v2/bandcamp.js'],
+			version: 2
 		},
 
 		{
@@ -118,7 +113,8 @@ define(function() {
 		{
 			label: 'Pandora',
 			matches: ['*://www.pandora.com/*'],
-			js: ['connectors/pandora.js']
+			js: ['connectors/v2/pandora.js'],
+			version: 2
 		},
 
 		{
@@ -143,7 +139,8 @@ define(function() {
 		{
 			label: 'Amazon',
 			matches: ['*://www.amazon.com/gp/dmusic/cloudplayer/*', '*://www.amazon.de/gp/dmusic/cloudplayer/*', '*://www.amazon.es/gp/dmusic/cloudplayer/*', '*://www.amazon.co.uk/gp/dmusic/cloudplayer/*'],
-			js: ['connectors/amazon.js']
+			js: ['connectors/v2/amazon.js'],
+			version: 2
 		},
 
 		{ // DEAD?
@@ -205,15 +202,16 @@ define(function() {
 
 		{
 			label: 'Spotify',
-			matches: ['https://play.spotify.com/*'],
+			matches: ['https://player.spotify.com/*'],
 			js: ['connectors/v2/spotify.js'],
 			version: 2
 		},
 
 		{
-			label: 'Grooveshark',
-			matches: ['*://grooveshark.com/*'],
-			js: ['connectors/grooveshark.js']
+			label: 'Spotify',
+			matches: ['https://play.spotify.com/*'],
+			js: ['connectors/v2/spotify-play.js'],
+			version: 2
 		},
 
 		{
@@ -237,7 +235,8 @@ define(function() {
 		{
 			label: 'Slacker (main page)',
 			matches: ['*://www.slacker.com/*'],
-			js: ['connectors/slacker2.js']
+			js: ['connectors/v2/slacker2.js'],
+			version: 2
 		},
 
 		{
@@ -291,7 +290,8 @@ define(function() {
 		{
 			label: 'Songza',
 			matches: ['*://songza.com/*'],
-			js: ['connectors/songza.js']
+			js: ['connectors/v2/songza.js'],
+			version: 2
 		},
 
 		{
@@ -351,7 +351,8 @@ define(function() {
 		{
 			label: 'BBC RadioPlayer',
 			matches: ['*://www.bbc.co.uk/radio/player/*'],
-			js: ['connectors/bbcradioplayer.js']
+			js: ['connectors/v2/bbcradioplayer.js'],
+			version: 2
 		},
 
 		{
@@ -393,7 +394,8 @@ define(function() {
 		{
 			label: 'MixCloud (Timestamped mixes only)',
 			matches: ['*://mixcloud.com/*', '*://*.mixcloud.com/*'],
-			js: ['connectors/mixcloud.js']
+			js: ['connectors/v2/mixcloud.js'],
+			version: 2
 		},
 
 		{
@@ -422,7 +424,7 @@ define(function() {
 
 		{
 			label: 'Odnoklassniki',
-			matches: ['*://odnoklassniki.ru/*'],
+			matches: ['*://odnoklassniki.ru/*', '*://ok.ru/*'],
 			js: ['connectors/odnoklassniki.js'],
 			allFrames: true
 		},
@@ -510,6 +512,42 @@ define(function() {
 			matches: ['*://somafm.com/player/*'],
 			js: ['connectors/v2/somafm.js'],
 			version: 2
+		},
+
+		{
+			label: 'Noisetrade',
+			matches: ['*://www.noisetrade.com/*', '*://noisetrade.com/*'],
+			js: ['connectors/v2/noisetrade.js'],
+			version: 2
+		},
+
+		{
+			label: 'Free Music Archive',
+			matches: ['*://www.freemusicarchive.org/*', '*://freemusicarchive.org/*', '*://www.freemusicarchive.com/*', '*://freemusicarchive.com/*'],
+			js: ['connectors/v2/freemusicarchive.js'],
+			version: 2
+		},
+
+		{
+			label: 'musicase',
+			matches: ['*://musicase.me/*'],
+			js: ['connectors/v2/musicase.js'],
+			version: 2
+		},
+
+		{
+			label: 'Reddit Music Player',
+			matches: ['*://reddit.music.player.il.ly/'],
+			js: ['connectors/v2/redditmusicplayer.js'],
+			version: 2
+		},
+
+		{
+			label: 'kollekt.fm',
+			matches: ['*://kollekt.fm/*'],
+			js: ['connectors/v2/kollekt.js'],
+			version: 2
 		}
+
 	];
 });

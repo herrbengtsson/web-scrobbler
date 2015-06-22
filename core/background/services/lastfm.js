@@ -246,12 +246,19 @@ define([
 	 * @param cb {Function(boolean)} callback where validation result will be passed
 	 */
 	function loadSongInfo(song, cb) {
+
 		var params = {
 			method: 'track.getinfo',
 			autocorrect: localStorage.useAutocorrect ? localStorage.useAutocorrect : 0,
 			artist: song.processed.artist || song.parsed.artist,
 			track: song.processed.track || song.parsed.track
 		};
+
+		if (params.artist === null || params.track === null) {
+			song.flags.attr('isLastfmValid', false);
+			cb(false);
+			return;
+		}
 
 		var okCb = function(xmlDoc) {
 			var $doc = $(xmlDoc);
@@ -264,8 +271,13 @@ define([
 				duration: parseInt($doc.find('track > duration').text()) / 1000
 			});
 
+			var thumbUrl = song.getTrackArt();
+			if (thumbUrl === null) {
+				thumbUrl = $doc.find('album > image[size="medium"]').text();
+			}
+
 			song.metadata.attr({
-				artistThumbUrl: $doc.find('album > image[size="medium"]').text()
+				artistThumbUrl: thumbUrl
 			});
 
 			song.flags.attr('isLastfmValid', true);

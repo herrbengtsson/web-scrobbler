@@ -99,6 +99,15 @@ var BaseConnector = window.BaseConnector || function () {
 		this.trackArtImageSelector = null;
 
 		/**
+		 * Default array of seperators.
+		 *
+		 * Push new seprators in the implementation if required.
+		 *
+ 		 * @type {array}
+		 */
+		this.separators = [' - ', ' – ', ' — ', '-', '–', '—', ':', '|', '///'];
+
+		/**
 		 * Default implementation of artist name lookup by selector
 		 *
 		 * Override this method for more complex behaviour
@@ -279,6 +288,16 @@ var BaseConnector = window.BaseConnector || function () {
 			return this.trackArtImageSelector === null ? null : $(this.trackArtImageSelector).attr('src');
 		};
 
+		/**
+		 * Default implementation of a check to see if a state change is allowed.
+		 *  MutationObserver will ignore mutations while this function returns false.
+		 *
+		 * Override this method to allow certain states to be ignored, for example if an advert is playing.
+		 * @return {Boolean}
+		 */
+		this.isStateChangeAllowed = function () {
+			return true;
+		};
 
 		// --- state & api -------------------------------------------------------------------------------------------------
 
@@ -447,11 +466,8 @@ var BaseConnector = window.BaseConnector || function () {
 				return null;
 			}
 
-			// care - minus vs hyphen
-			var separators = [' - ', ' – ', '-', '–', ':'];
-
-			for (var i in separators) {
-				var sep = separators[i];
+			for (var i in this.separators) {
+				var sep = this.separators[i];
 				var index = str.indexOf(sep);
 				if (index > -1) {
 					return { index: index, length: sep.length };
